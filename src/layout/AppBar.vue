@@ -1,28 +1,19 @@
 <template>
-  <header class="appbar">
-    <div class="logo flex items-center gap-2" @mouseenter="logoHover = true" @mouseleave="logoHover = false">
-      <LucideCode :size="36" class="logo-icon" />
+  <header class="appbar glassy-header">
+    <div class="logo flex items-center gap-2 group cursor-pointer select-none" @mouseenter="logoHover = true" @mouseleave="logoHover = false">
+      <LucideCode :size="38" class="logo-icon transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-8deg]" />
       <span :class="['logo-text', { 'logo-animate': logoHover }]" v-if="!menuOpen">Portfolio</span>
     </div>
     <nav class="flex items-center gap-4">
       <ul :class="['nav-list', { 'open': menuOpen }]">
-        <li>
-          <a href="#summary" class="nav-link">Summary</a>
-        </li>
-        <li>
-          <a href="#education" class="nav-link">Education</a>
-        </li>
-        <li>
-          <a href="#projects" class="nav-link">Projects</a>
-        </li>
-        <li>
-          <a href="#skills" class="nav-link">Skills</a>
-        </li>
-        <li>
-          <a href="#contacts" class="nav-link">Contacts</a>
-        </li>
+        <li><a href="#summary" class="nav-link">Summary</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#contacts" class="nav-link">Contacts</a></li>
       </ul>
-      <ThemeToggle class="ml-2 align-middle" style="--theme-toggle-size: 1.5rem;" />
+      <ThemeToggle class="ml-2 align-middle" style="--theme-toggle-size: 1.7rem;" />
+      <a href="#contact" class="header-cta hidden md:inline-block ml-4">Contact</a>
       <button class="burger" @click="menuOpen = !menuOpen">
         <span :class="{ 'open': menuOpen }"></span>
         <span :class="{ 'open': menuOpen }"></span>
@@ -47,14 +38,29 @@ const creations = [
 ]
 </script>
 <style scoped>
-.appbar {
-  @apply w-full fixed top-0 left-0 z-50 flex items-center justify-between px-8 py-4 bg-glass dark:bg-glass-dark border-b border-glass-border dark:border-glass-border-dark shadow-lg transition-colors duration-500 backdrop-blur-lg;
+/* Glassmorphism + shadow + border + blur */
+.appbar.glassy-header {
+  @apply w-full fixed top-0 left-0 z-50 flex items-center justify-between px-8 py-4 border-b border-glass-border dark:border-glass-border-dark transition-colors duration-500 backdrop-blur-lg;
+  background: rgba(255,255,255,0.75);
+  box-shadow: 0 8px 32px 0 rgba(66,184,131,0.10), 0 2px 24px 0 #42b88333;
+  border-bottom: 2px solid rgba(66,184,131,0.13);
+  backdrop-filter: blur(16px) saturate(1.2);
+  /* dark mode */
 }
+.dark .appbar.glassy-header {
+  background: rgba(24,24,32,0.82);
+  box-shadow: 0 8px 32px 0 #00c89622, 0 2px 24px 0 #00c89633;
+  border-bottom: 2px solid rgba(0,200,150,0.13);
+}
+/* Logo text modern effect */
 .logo-text {
   @apply font-extrabold text-3xl text-primary dark:text-primary-dark tracking-tight transition-transform duration-300 drop-shadow-lg;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 16px #42b88333, 0 1px 0 #fff;
 }
 .logo-icon {
   @apply text-primary dark:text-primary-dark drop-shadow-lg transition-all duration-300;
+  filter: drop-shadow(0 0 8px #42b88355);
 }
 .logo:hover .logo-icon, .logo:hover .logo-text {
   transform: scale(1.08) rotate(-4deg);
@@ -66,10 +72,14 @@ const creations = [
 }
 .nav-list {
   @apply flex gap-10 items-center transition-all duration-500;
+  font-size: 1.13rem;
 }
 .nav-link {
   @apply font-semibold text-lg text-secondary dark:text-secondary-dark px-4 py-1 rounded-lg transition-all duration-300 hover:bg-primary/10 dark:hover:bg-primary-dark/10 hover:text-primary dark:hover:text-primary-dark shadow-sm relative;
   overflow: hidden;
+  letter-spacing: 0.02em;
+  position: relative;
+  background: linear-gradient(90deg,rgba(66,184,131,0.04),rgba(0,200,150,0.04));
 }
 .nav-link::after {
   content: '';
@@ -79,6 +89,7 @@ const creations = [
   width: 0;
   height: 2px;
   background: linear-gradient(90deg, #42b883 0%, #00c896 100%);
+  border-radius: 2px;
   transition: width 0.3s cubic-bezier(.68,-0.55,.27,1.55), left 0.3s cubic-bezier(.68,-0.55,.27,1.55);
 }
 .nav-link:hover::after, .nav-link.active::after {
@@ -87,6 +98,16 @@ const creations = [
 }
 .nav-link.active {
   @apply bg-primary/20 dark:bg-primary-dark/20 text-primary dark:text-primary-dark;
+  font-weight: 900;
+  box-shadow: 0 2px 12px #42b88322;
+}
+.header-cta {
+  @apply px-6 py-2 rounded-full font-bold text-base bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 text-white shadow-lg hover:scale-105 hover:from-green-500 hover:to-teal-500 transition-all duration-300 border-2 border-white/30;
+  letter-spacing: 0.04em;
+  box-shadow: 0 2px 16px #42b88333;
+}
+.header-cta:hover {
+  filter: brightness(1.1) drop-shadow(0 0 8px #00c89699);
 }
 .creations-menu {
   animation: fade-in 0.3s;

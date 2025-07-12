@@ -5,7 +5,7 @@
       <h1 class="text-4xl md:text-6xl font-extrabold leading-tight animate-slide-in">
         I'm <span class="text-primary dark:text-primary-dark">Wassim</span>
       </h1>
-      <p class="text-lg md:text-xl text-secondary dark:text-white animate-fade-in delay-200">Fullstack Developer based in Algeria</p>
+      <p class="text-lg md:text-xl text-secondary dark:text-white animate-fade-in delay-200">MERN Stack and Flutter Developer based in Algeria</p>
       <div class="flex flex-wrap gap-3 mt-4 animate-fade-in delay-300">
         <span v-for="tag in tags" :key="tag" class="tag bg-primary/10 dark:bg-primary-dark/20 text-primary dark:text-primary-dark">{{ tag }}</span>
       </div>
