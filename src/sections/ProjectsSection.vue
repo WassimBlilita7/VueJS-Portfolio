@@ -3,43 +3,62 @@
     <h2 class="text-3xl md:text-5xl font-extrabold text-primary dark:text-primary-dark animate-slide-in mb-8">🚀 Projects</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-6xl">
       <ProjectCard
-        title="Product Store"
-        description="E-commerce moderne (PERN stack) avec gestion produits, panier, paiement sécurisé et dashboard admin."
-        image="https://undraw.co/api/illustrations/svg?search=store"
-        lottie="https://assets2.lottiefiles.com/packages/lf20_3rwasyjy.json"
-        :tags="['PERN', 'E-commerce', 'UI/UX', 'Stripe', 'Admin']"
-        link="https://github.com/wassimdev/product-store"
-      />
-      <ProjectCard
-        title="Wassit Freelancer DZ"
-        description="Plateforme MERN pour freelances algériens : profils, missions, messagerie, paiement sécurisé."
-        image="https://undraw.co/api/illustrations/svg?search=freelancer"
-        lottie="https://assets7.lottiefiles.com/packages/lf20_kkflmtur.json"
-        :tags="['MERN', 'Freelance', 'Marketplace', 'Algérie', 'Realtime']"
-        link="https://github.com/wassimdev/wassit-freelancer-dz"
-      />
-      <ProjectCard
-        title="Netflix Clone"
-        description="Clone Netflix (MERN) avec authentification, streaming vidéo, recherche, favoris et responsive design."
-        image="https://undraw.co/api/illustrations/svg?search=movie"
-        lottie="https://assets2.lottiefiles.com/packages/lf20_3rwasyjy.json"
-        :tags="['MERN', 'Streaming', 'Auth', 'Responsive', 'UI/UX']"
-        link="https://github.com/wassimdev/netflix-clone"
-      />
-      <ProjectCard
-        title="Weather App"
-        description="Application météo moderne (React, API) avec géolocalisation, prévisions, animations et dark mode."
-        image="https://undraw.co/api/illustrations/svg?search=weather"
-        lottie="https://assets7.lottiefiles.com/packages/lf20_kkflmtur.json"
-        :tags="['React', 'API', 'Weather', 'Animations', 'Dark Mode']"
-        link="https://github.com/wassimdev/weather-app"
+        v-for="project in projects"
+        :key="project.title"
+        :title="project.title"
+        :description="project.description"
+        :image="project.image"
+        :lottie="project.lottie"
+        :tags="project.tags"
+        :link="project.link"
       />
     </div>
   </section>
 </template>
+
 <script setup>
 import ProjectCard from '../components/ProjectCard.vue'
+import productImg from '../assets/projects/product.png'
+import freelancerImg from '../assets/projects/freelancer.jpg'
+import netflixImg from '../assets/projects/netflix.jpg'
+import weatherImg from '../assets/projects/weather.png'
+
+const projects = [
+  {
+    title: "Product Store",
+    description: "E-commerce moderne (PERN stack) avec gestion produits, panier,  et dashboard admin.",
+    image: productImg,
+    lottie: "https://assets2.lottiefiles.com/packages/lf20_3rwasyjy.json",
+    tags: ['+10 Themestyles', 'E-commerce', 'UI/UX', 'Stripe', 'Admin Panel'],
+    link: "https://github.com/WassimBlilita7/Product-Store"
+  },
+  {
+    title: "Wassit Freelancer DZ",
+    description: "Plateforme MERN pour freelances algériens : profils, missions, messagerie, paiement sécurisé.",
+    image: freelancerImg,
+    lottie: "https://assets7.lottiefiles.com/packages/lf20_kkflmtur.json",
+    tags: ['MERN', 'Freelance', 'Marketplace', 'Algérie', 'Realtime'],
+    link: "https://github.com/WassimBlilita7/Wassit-Freelancer-DZ"
+  },
+  {
+    title: "Netflix Clone",
+    description: "Clone Netflix (MERN) avec authentification, streaming vidéo, recherche, favoris et responsive design.",
+    image: netflixImg,
+    lottie: "https://assets2.lottiefiles.com/packages/lf20_3rwasyjy.json",
+    tags: ['MERN', 'Streaming', 'Auth', 'Responsive', 'UI/UX'],
+    link: "https://github.com/WassimBlilita7/netflix"
+  },
+  {
+    title: "Weather App",
+    description: "Application météo moderne (React, API) avec géolocalisation, prévisions, animations et dark mode.",
+    image: weatherImg,
+    lottie: "https://assets7.lottiefiles.com/packages/lf20_kkflmtur.json",
+    tags: ['React', 'API', 'Weather', 'Animations', 'Dark Mode'],
+    link: "https://github.com/WassimBlilita7/Weather-App"
+  }
+]
 </script>
+
 <style scoped>
 .projects-section {
   @apply w-full max-w-7xl mx-auto rounded-3xl shadow-glass;

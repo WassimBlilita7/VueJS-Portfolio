@@ -48,26 +48,20 @@ const CertificateIcon = {
 
 const educationHistory = shallowRef([
   {
-    degree: 'Master in Computer Science',
-    institution: 'University of Algiers',
-    duration: '2021 - 2023',
-    description: 'Specialized in advanced algorithms, artificial intelligence, and software architecture. Graduated with honors.',
+    degree: 'Master in Computer Science (Distributed Systems)',
+    institution: 'University of Ferhat Abbes , Setif',
+    duration: '2023 - 2025',
+    description: 'Specialized in advanced algorithms, artificial intelligence, and software architecture. Ranked in the top 5% of the class.',
     icon: GraduationCapIcon
   },
   {
     degree: 'Bachelor in Computer Science',
-    institution: 'University of Algiers',
-    duration: '2018 - 2021',
-    description: 'Focused on core computer science principles, including data structures, database management, and web development. Ranked in the top 10% of the class.',
+    institution: 'University of Ferhat Abbes , Setif',
+    duration: '2020 - 2023',
+    description: 'Focused on core computer science principles, including data structures, database management, and web development. Graduated with honors.',
     icon: BookOpenIcon
   },
-  {
-    degree: 'Online Certifications',
-    institution: 'Coursera, Udemy, etc.',
-    duration: 'Ongoing',
-    description: 'Continuously learning and staying updated with the latest technologies in web development, cloud computing, and machine learning.',
-    icon: CertificateIcon
-  }
+
 ]);
 </script>
 
