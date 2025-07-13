@@ -5,6 +5,7 @@
     <EducationSection />
     <SkillsSection />
     <ProjectsSection />
+    <ContactSection />
     <div class="flex flex-col items-center justify-center min-h-screen transition-colors duration-500 bg-gradient-to-br from-green-200 via-blue-100 to-purple-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-24">
       <ThemeToggle />
       <ThreeCanvas />
@@ -20,6 +21,7 @@ import SummarySection from './sections/SummarySection.vue'
 import EducationSection from './sections/EducationSection.vue'
 import SkillsSection from './sections/SkillsSection.vue'
 import ProjectsSection from './sections/ProjectsSection.vue'
+import ContactSection from './sections/ContactSection.vue'
 import ThreeCanvas from './components/ThreeCanvas.vue'
 import ThemeToggle from './ui/ThemeToggle.vue'
 </script>
