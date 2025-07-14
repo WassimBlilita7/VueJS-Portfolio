@@ -1,19 +1,17 @@
 <template>
   <header class="appbar glassy-header">
-    <div class="logo flex items-center gap-2 group cursor-pointer select-none" @mouseenter="logoHover = true" @mouseleave="logoHover = false">
+    <div class="logo flex items-center gap-2 group cursor-pointer select-none" @click="refreshPage">
       <LucideCode :size="38" class="logo-icon transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-8deg]" />
-      <span :class="['logo-text', { 'logo-animate': logoHover }]" v-if="!menuOpen">Portfolio</span>
+      <span class="logo-text">Portfolio</span>
     </div>
     <nav class="flex items-center gap-4">
       <ul :class="['nav-list', { 'open': menuOpen }]">
-        <li><a href="#summary" class="nav-link">Summary</a></li>
-        <li><a href="#education" class="nav-link">Education</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#contacts" class="nav-link">Contacts</a></li>
+        <li v-for="item in navItems" :key="item.name">
+          <a :href="item.href" @click.prevent="scrollToSection(item.href)" class="nav-link" :class="{ 'active': activeSection === item.href }">{{ item.name }}</a>
+        </li>
       </ul>
-      <ThemeToggle class="ml-2 align-middle" style="--theme-toggle-size: 1.7rem;" />
-      <a href="#contact" class="header-cta hidden md:inline-block ml-4">Contact</a>
+      <ThemeToggle class="theme-toggle" />
+      <a href="#contact" @click.prevent="scrollToSection('#contact')" class="header-cta hidden md:inline-block ml-4">Contact</a>
       <button class="burger" @click="menuOpen = !menuOpen">
         <span :class="{ 'open': menuOpen }"></span>
         <span :class="{ 'open': menuOpen }"></span>
@@ -23,11 +21,46 @@
   </header>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import navItems from '../constants/navItems.js'
 import ThemeToggle from '../ui/ThemeToggle.vue'
 import { LucideCode, LucideChevronDown } from 'lucide-vue-next'
 const menuOpen = ref(false)
+const activeSection = ref('')
+
+const scrollToSection = (selector) => {
+  const element = document.querySelector(selector)
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' })
+  }
+  menuOpen.value = false
+}
+
+const refreshPage = () => {
+  window.location.reload()
+}
+
+const handleScroll = () => {
+  const sections = navItems.map(item => document.querySelector(item.href))
+  const scrollPosition = window.scrollY + 100 // offset
+
+  for (const section of sections) {
+    if (section && scrollPosition >= section.offsetTop && scrollPosition < section.offsetTop + section.offsetHeight) {
+      activeSection.value = `#${section.id}`
+      break;
+    }
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+  handleScroll() // set active section on initial load
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
+
 const hovered = ref(null)
 const logoHover = ref(false)
 const creationsOpen = ref(false)

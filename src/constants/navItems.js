@@ -1,6 +1,7 @@
 export default [
-  { name: 'Accueil', href: '#home' },
-  { name: 'À propos', href: '#about' },
-  { name: 'Projets', href: '#projects' },
-  { name: 'Contact', href: '#contact' }
-] 
+  { name: 'Summary', href: '#summary' },
+  { name: 'Services', href: '#services' },
+  { name: 'Education', href: '#education' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Skills', href: '#skills' },
+];

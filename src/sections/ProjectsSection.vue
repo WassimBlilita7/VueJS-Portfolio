@@ -1,5 +1,5 @@
 <template>
-  <section class="projects-section flex flex-col items-center gap-12 px-6 md:px-16 py-16 md:py-24 bg-gradient-to-br from-blue-100 via-green-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-500 rounded-3xl shadow-glass">
+  <section id="projects" class="projects-section flex flex-col items-center gap-12 px-6 md:px-16 py-16 md:py-24 bg-gradient-to-br from-blue-100 via-green-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-500 rounded-3xl shadow-glass">
     <h2 class="text-3xl md:text-5xl font-extrabold text-primary dark:text-primary-dark animate-slide-in mb-8">🚀 Projects</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-6xl">
       <ProjectCard

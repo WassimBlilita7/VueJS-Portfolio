@@ -1,39 +1,49 @@
 <template>
-  <section class="summary-section flex flex-col md:flex-row items-center justify-between gap-8 px-6 md:px-16 py-16 md:py-24 bg-gradient-to-br from-blue-100 via-green-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-500 rounded-3xl shadow-glass">
+  <section id="summary" class="summary-section flex flex-col md:flex-row items-center justify-between gap-8 px-6 md:px-16 py-16 md:py-24 bg-gradient-to-br from-blue-100 via-green-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-500 rounded-3xl shadow-glass">
     <div class="flex-1 flex flex-col gap-6 items-start">
       <span class="hello text-lg font-medium text-primary dark:text-primary-dark animate-fade-in">— Hello There!</span>
       <h1 class="text-4xl md:text-6xl font-extrabold leading-tight animate-slide-in">
-        I'm <span class="text-primary dark:text-primary-dark">Wassim</span>
+        I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-500 dark:from-primary-dark dark:to-teal-400">Wassim</span>
       </h1>
       <p class="text-lg md:text-xl text-secondary dark:text-white animate-fade-in delay-200">MERN Stack and Flutter Developer based in Algeria</p>
       <div class="flex flex-wrap gap-3 mt-4 animate-fade-in delay-300">
         <span v-for="tag in tags" :key="tag" class="tag bg-primary/10 dark:bg-primary-dark/20 text-primary dark:text-primary-dark">{{ tag }}</span>
       </div>
       <div class="flex gap-4 mt-6 animate-fade-in delay-400">
-        <button class="btn-main">Portfolio</button>
-        <button class="btn-secondary">Hire Me</button>
+        <a href="#projects" @click.prevent="scrollToSection('#projects')" class="btn-main">Portfolio</a>
+        <a href="#contact" @click.prevent="scrollToSection('#contact')" class="btn-secondary">Hire Me</a>
       </div>
-      <div class="flex items-center gap-3 mt-6 animate-fade-in delay-500">
-        <span class="text-primary dark:text-primary-dark font-bold text-lg">150+ Reviews <span class="text-xs">(4.9 of 5)</span></span>
-        <span class="text-secondary dark:text-secondary-dark text-sm">Reviews from Valued Clients</span>
+      <div class="flex items-center gap-4 mt-8 animate-fade-in delay-500">
+        <a :href="contactInfo.github" target="_blank" class="social-icon">
+          <Github :size="28" />
+        </a>
+        <a :href="contactInfo.linkedin" target="_blank" class="social-icon">
+          <Linkedin :size="28" />
+        </a>
       </div>
     </div>
     <div class="flex-1 flex flex-col items-center justify-center relative animate-profile">
       <div class="profile-bg absolute rounded-full bg-primary/10 dark:bg-primary-dark/20 w-64 h-64 md:w-80 md:h-80 z-0 animate-pulse-slow"></div>
       <img class="profile-img relative z-10 rounded-full shadow-2xl border-4 border-white dark:border-gray-800 animate-pop-in" src="/src/assets/me.jpg" alt="Profile" />
-      <div class="absolute top-2 right-2 bg-white dark:bg-primary-dark rounded-full px-3 py-1 shadow text-primary dark:text-white text-xs font-bold rotate-12 animate-bounce">Hire Me</div>
+      <div class="absolute top-2 right-2 bg-white dark:bg-primary-dark rounded-full px-3 py-1 shadow text-primary dark:text-white text-xs font-bold rotate-12 animate-pulse-slow">Hire Me</div>
     </div>
   </section>
 </template>
 <script setup>
 import { ref } from 'vue'
+import { contactInfo } from '../constants/contact'
+import { Github, Linkedin } from 'lucide-vue-next'
+
+const scrollToSection = (selector) => {
+  document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
+};
+
 const tags = [
-  'Website Design',
-  'Dashboard',
-  'Wireframe',
-  'User Research',
-  'Design System',
-  'Mobile App Design',
+  'Web Development',
+  'Mobile Development',
+  'Problem Solving',
+  'Database Management',
+
 ]
 </script>
 <style scoped>
@@ -46,8 +56,14 @@ const tags = [
 .text-primary {
   color: #42b883;
 }
+.dark .text-primary {
+  color: #00c896;
+}
 .text-secondary {
   color: #22223b;
+}
+.dark .text-secondary {
+  color: #e0e1dd;
 }
 .text-primary-dark {
   color: #00c896;
@@ -78,6 +94,9 @@ const tags = [
 }
 .tag {
   @apply px-4 py-1 rounded-full font-semibold text-sm shadow hover:scale-105 transition-all duration-200;
+}
+.social-icon {
+  @apply text-secondary dark:text-secondary-dark hover:text-primary dark:hover:text-primary-dark transition-all duration-300 hover:scale-110;
 }
 .profile-bg {
   filter: blur(0.5px);
