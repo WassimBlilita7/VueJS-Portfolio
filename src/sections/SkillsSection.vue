@@ -2,8 +2,8 @@
   <section id="skills" class="skills-section px-6 md:px-16 py-16 md:py-24 bg-gradient-to-br from-blue-50 via-white to-green-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-500">
     <div class="container mx-auto max-w-7xl">
       <div class="grid md:grid-cols-2 gap-16 items-center">
-        <div class="flex-1 flex flex-col items-center justify-center relative animate-profile order-last md:order-first">
-          <LottiePlayer path="https://assets4.lottiefiles.com/packages/lf20_w94bhm66.json" />
+        <div class="flex-1 flex items-center justify-center relative animate-profile order-last md:order-first">
+          <img src="../assets/skills/skill.png" alt="Skills" class="w-full h-auto max-w-md rounded-lg shadow-lg object-cover">
         </div>
         <div class="flex-1 flex flex-col gap-6 items-start">
           <h2 class="text-4xl md:text-5xl font-extrabold text-primary dark:text-primary-dark animate-slide-in">
@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import LottiePlayer from '../components/LottiePlayer.vue';
+
 
 const skillCategories = [
   {
@@ -51,9 +51,14 @@ const skillCategories = [
     skills: ['Flutter', 'Dart' , 'Provider', 'GetX', 'Firebase']
   },
   {
+    name: 'Design',
+    icon: 'fas fa-palette',
+    skills: ['Figma', 'Illustrator', 'Photoshop']
+  },
+  {
     name: 'Tools & Methods',
     icon: 'fas fa-tools',
-    skills: ['Git', 'Github', 'VPS', 'Postman', 'Figma', 'Render']
+    skills: ['Git', 'Github', 'VPS', 'Postman', 'Render']
   }
 ];
 </script>

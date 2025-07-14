@@ -13,6 +13,7 @@
         :link="project.link"
       />
     </div>
+    <a href="https://github.com/WassimBlilita7" target="_blank" class="btn-main mt-8">View More</a>
   </section>
 </template>
 
@@ -63,6 +64,11 @@ const projects = [
 .projects-section {
   @apply w-full max-w-7xl mx-auto rounded-3xl shadow-glass;
 }
+
+.btn-main {
+  @apply px-8 py-3 rounded-full font-bold text-lg bg-primary text-white shadow-lg hover:scale-105 hover:bg-primary-dark transition-all duration-300;
+}
+
 /* Animations */
 @keyframes slide-in {
   from { transform: translateY(-40px); opacity: 0; }

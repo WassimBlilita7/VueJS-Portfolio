@@ -1,14 +1,17 @@
 <template>
   <div class="project-card bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-    <div class="relative h-56 w-full">
-      <img :src="image" :alt="title" class="w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-        <a :href="link" target="_blank" rel="noopener noreferrer" class="btn-main">View on GitHub</a>
+    <div class="relative h-56 w-full group">
+      <img :src="image" :alt="title" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+      <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <a :href="link" target="_blank" rel="noopener noreferrer" class="btn-main flex items-center gap-2">
+          <Github :size="20" />
+          View on GitHub
+        </a>
       </div>
     </div>
     <div class="p-6">
       <h3 class="text-2xl font-bold text-primary dark:text-primary-dark mb-2">{{ title }}</h3>
-      <p class="text-secondary dark:text-secondary-dark mb-4">{{ description }}</p>
+      <p class="text-secondary dark:text-secondary-dark mb-4 h-20 overflow-hidden">{{ description }}</p>
       <div class="flex flex-wrap gap-2">
         <span v-for="tag in tags" :key="tag" class="tag-badge bg-primary/10 dark:bg-primary-dark/20 text-primary dark:text-primary-dark">{{ tag }}</span>
       </div>
@@ -17,6 +20,8 @@
 </template>
 
 <script setup>
+import { Github } from 'lucide-vue-next';
+
 const props = defineProps({
   title: String,
   description: String,

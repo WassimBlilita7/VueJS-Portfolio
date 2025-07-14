@@ -11,11 +11,11 @@
         <!-- Timeline -->
         <div class="w-full md:w-2/3">
           <div class="relative border-l-4 border-primary dark:border-primary-dark ml-4 md:ml-0">
-            <div v-for="(item, index) in educationHistory" :key="index" class="mb-10 ml-8">
-              <div class="absolute -left-4 mt-1.5 w-8 h-8 bg-primary dark:bg-primary-dark rounded-full border-4 border-white dark:border-gray-900 flex items-center justify-center">
+            <div v-for="(item, index) in educationHistory" :key="index" class="mb-10 ml-8 timeline-item">
+              <div class="absolute -left-4 mt-1.5 w-8 h-8 bg-primary dark:bg-primary-dark rounded-full border-4 border-white dark:border-gray-900 flex items-center justify-center timeline-icon">
                 <component :is="item.icon" class="w-5 h-5 text-white" />
               </div>
-              <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+              <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div class="flex justify-between items-center mb-2">
                   <h3 class="text-xl font-bold text-gray-900 dark:text-white">{{ item.degree }}</h3>
                   <span class="bg-primary/10 text-primary dark:bg-primary-dark/20 dark:text-primary-dark text-sm font-semibold px-3 py-1 rounded-full">{{ item.duration }}</span>
@@ -33,18 +33,7 @@
 
 <script setup>
 import { shallowRef } from 'vue';
-
-// Define SVG components for icons
-const GraduationCapIcon = {
-  template: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.906 59.906 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0l15.482 0m-15.482 0a25.053 25.053 0 01-1.072-4.243" /></svg>`
-};
-const BookOpenIcon = {
-  template: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>`
-};
-const CertificateIcon = {
-  template: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9a9.75 9.75 0 100-13.5h9a9.75 9.75 0 100 13.5z" /><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75a9.75 9.75 0 00-9-13.5" /></svg>`
-};
-
+import { GraduationCap, BookOpen } from 'lucide-vue-next';
 
 const educationHistory = shallowRef([
   {
@@ -52,22 +41,37 @@ const educationHistory = shallowRef([
     institution: 'University of Ferhat Abbes , Setif',
     duration: '2023 - 2025',
     description: 'Specialized in advanced algorithms, artificial intelligence, and software architecture. Ranked in the top 5% of the class.',
-    icon: GraduationCapIcon
+    icon: GraduationCap
   },
   {
     degree: 'Bachelor in Computer Science',
     institution: 'University of Ferhat Abbes , Setif',
     duration: '2020 - 2023',
     description: 'Focused on core computer science principles, including data structures, database management, and web development. Graduated with honors.',
-    icon: BookOpenIcon
+    icon: BookOpen
   },
 
 ]);
 </script>
 
 <style scoped>
-/* Additional styles for the timeline line */
 .container {
   max-width: 1200px;
+}
+
+.timeline-item {
+  transition: transform 0.3s ease-in-out;
+}
+
+.timeline-item:hover {
+  transform: translateX(10px);
+}
+
+.timeline-icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.timeline-item:hover .timeline-icon {
+  transform: scale(1.2);
 }
 </style>

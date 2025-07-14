@@ -10,7 +10,9 @@
       <div class="grid md:grid-cols-3 gap-8">
         <div v-for="service in services" :key="service.title" class="service-card">
           <div class="p-6">
-            <component :is="service.icon" class="w-12 h-12 text-primary dark:text-primary-dark mb-4" />
+            <div class="service-icon-wrapper">
+              <component :is="service.icon" class="w-12 h-12 text-primary dark:text-primary-dark" />
+            </div>
             <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{{ service.title }}</h3>
             <p class="text-gray-600 dark:text-gray-400">{{ service.description }}</p>
           </div>
@@ -48,10 +50,20 @@ const services = shallowRef([
   @apply bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 ease-in-out hover:-translate-y-2 text-center;
   border: 1px solid rgba(0,0,0,0.05);
 }
+
 .dark .service-card {
     border: 1px solid rgba(255,255,255,0.1);
 }
+
 .service-card .p-6 {
   @apply flex flex-col items-center;
+}
+
+.service-icon-wrapper {
+  @apply w-24 h-24 rounded-full bg-primary/10 dark:bg-primary-dark/20 flex items-center justify-center mb-6 transition-all duration-300 ease-in-out;
+}
+
+.service-card:hover .service-icon-wrapper {
+  @apply scale-110 -translate-y-1;
 }
 </style> 
